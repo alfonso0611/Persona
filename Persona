@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+namespace Programa
+{
+class persona
+{
+public string nombre;
+public int codigo;
+public string telefono;
+public string facebook;
+
+
+
+public void  recaudarDatos(){
+Console.WriteLine("Código:");
+this.codigo = int.Parse(Console.ReadLine());
+Console.WriteLine("Nombre:");
+this.nombre = Console.ReadLine();
+Console.WriteLine("Facebook:");
+this.facebook = Console.ReadLine();
+Console.WriteLine("Cual es telefono:");
+this.telefono = Console.ReadLine();
+}
+}
+class Principal{
+public static void Main(string[] args){
+		
+    String editar;
+    Hashtable Table = new Hashtable();
+    for (int i = 0; i <= 4; i++){
+	persona p = new persona();
+	p.recaudarDatos();
+    Table.Add(p.codigo,p);
+    Console.Clear();}
+    
+    
+      ICollection keysCollection = Table.Keys;
+     foreach(int llave in  keysCollection){
+	 persona p =  (persona) Table[llave];
+	 
+	Console.WriteLine("Código\n " + p.codigo + "\nNombre\n " + p.nombre + "\nFacebook\n " + p.facebook + " \nTélefono" + p.telefono);
+}
+      Console.Read();
+      
+int editarp;
+for (int c =0; c<2; c++){
+Console.WriteLine("Cual Codigo quiere editar?");
+editarp = int.Parse(Console.ReadLine()); 
+persona p =  (persona) Table[editarp];
+Console.WriteLine("Nombre:");
+p.nombre = Console.ReadLine();
+Console.WriteLine("Facebook:");
+p.facebook = Console.ReadLine();
+Console.WriteLine("Cual es telefono:");
+p.telefono = Console.ReadLine();
+Table[editarp]= p;
+}
+Console.Read();
+
+
+}
+}
+}
+
+
+
